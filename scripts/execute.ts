@@ -18,16 +18,16 @@ async function main() {
 
   const AccountFactory = await ethers.getContractFactory("AccountFactory");
   // used for test
-  const initCode = "0x"; 
+  // const initCode = "0x";
   // used for account creation
-  // const initCode = FACTORY_ADDRESS + AccountFactory.interface.encodeFunctionData("createAccount", [owner.address]).slice(2);
+  const initCode = FACTORY_ADDRESS + AccountFactory.interface.encodeFunctionData("createAccount", [owner.address]).slice(2);
 
   console.log({sender});
 
   const Account = await ethers.getContractFactory("Account");
 
   // Prefund the Paymaster so it can pay for the smart account
-  // await entryPoint.depositTo(PAYMASTER_ADDRESS, {value: ethers.parseEther("10")});
+  await entryPoint.depositTo(PAYMASTER_ADDRESS, {value: ethers.parseEther("10")});
 
   // Send user Op
   const userOp = {

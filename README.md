@@ -1,13 +1,14 @@
-# Sample Hardhat Project
+# Manual account abstraction
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This repo contains the tutorial from Alchemy on [Account Abstraction from scratch](https://docs.alchemy.com/docs/smart-accounts-from-scratch).
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+Here are the commands to:
 ```
+npm install
+npx hardhat node
+npx hh run scripts/deploy.ts --network localhost
+npx hh run scripts/execute.ts --network localhost
+npx hh run scripts/test.ts --network localhost
+```
+
+If you want to simulate multiple User Operations, modify the `execute.ts` file and remove the initCode from the userOP.
