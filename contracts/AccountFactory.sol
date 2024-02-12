@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/utils/Create2.sol";
 
 // Factory for Smart Contract Account
 contract AccountFactory {
+    // Don't use Create2.deploy because it uses the BALANCE opcode which is forbidden in the bundler
     function createAccount(address _owner) external returns(address) {
         bytes32 salt = bytes32(uint256(uint160(_owner)));
         bytes memory bytecode = abi.encodePacked(type(Account).creationCode, abi.encode(_owner));
